@@ -1,0 +1,314 @@
+.container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+    padding: 2rem;
+}
+*{
+    color: #831616 !important;
+}
+
+.content-wrapper {
+    padding: 2rem;
+    min-height: 90vh;
+    background: linear-gradient(135deg, rgba(144, 238, 144, 0.1), rgba(152, 251, 152, 0.1));
+}
+
+.profile-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 1200px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 4rem; 
+    margin-top: 7rem;
+}
+
+.profile-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+}
+
+.profile-right {
+    flex: 2;
+}
+
+.user-info-card {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.username-title {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-size: 2.2rem;
+}
+
+.bio-section {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.bio-text {
+    color: #34495e;
+    line-height: 1.6;
+}
+
+.contact-info {
+    display: grid;
+    gap: 1rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.info-icon {
+    color: #27ae60;
+    font-size: 1.2rem;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.update-button, .delete-button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.update-button {
+    background: rgba(39, 174, 96, 0.8);
+    color: white;
+}
+
+.delete-button {
+    background: rgba(231, 76, 60, 0.8);
+    color: white;
+}
+
+.dashboard-links {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+}
+
+.link-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.link-card {
+    flex: 1;
+    min-width: 250px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+}
+
+@media (max-width: 968px) {
+    .link-grid {
+        flex-direction: column;
+    }
+    
+    .link-card {
+        width: 100%;
+    }
+}
+
+.link-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 1rem;
+    background: rgba(39, 174, 96, 0.2);
+    border-radius: 50%;
+}
+
+.card-title {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.card-description {
+    color: #34495e;
+    font-size: 0.9rem;
+}
+
+.user-info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.section-title {
+    color: #2c3e50;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(39, 174, 96, 0.2);
+}
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.skill-tag {
+    background: #27ae60;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.contact-section {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 1.5rem;
+}
+
+.two-row-layout {
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.profile-row, .dashboard-row {
+    width: 100%;
+}
+
+.info-sections-container {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.main-info {
+    flex: 2;
+}
+
+.side-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.header-section {
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(39, 174, 96, 0.1);
+}
+
+.bio-section, .contact-section, .skills-section {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .user-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .bio-section {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (min-width: 1024px) {
+    .profile-card {
+        gap: 3rem;
+    }
+    
+    .profile-left {
+        flex: 0 0 300px;
+    }
+    
+    .profile-right {
+        flex: 1;
+    }
+}
+
+@media (max-width: 1024px) {
+    .link-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 968px) {
+    .info-sections-container {
+        flex-direction: column;
+    }
+    
+    .side-info {
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-card {
+        flex-direction: column;
+        margin-bottom: 3rem;
+    }
+    
+    .link-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .content-wrapper {
+        padding: 1rem;
+    }
+    
+    .dashboard-links {
+        padding: 1.5rem;
+    }
+    
+    .two-row-layout {
+        gap: 1.5rem;
+    }
+    
+    .side-info {
+        flex-direction: column;
+    }
+}

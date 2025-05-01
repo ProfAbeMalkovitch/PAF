@@ -1,0 +1,107 @@
+.nav_con {
+    width: 100%;
+}
+
+.side_logoo {
+
+    width: 150px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.navbar {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    backdrop-filter: blur(10px);
+    background: rgba(144, 238, 144, 0.15);
+    border-radius: 20px;
+    padding: 15px 30px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar_hidden {
+    transform: translate(-50%, -100%);
+    opacity: 0;
+}
+
+.navbar_visible {
+    transform: translate(-50%, 0);
+    opacity: 1;
+}
+
+.nav_item_set {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav_item_icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #2c3e50;
+    transition: all 0.2s ease;
+}
+
+.nav_item_icon:hover {
+    transform: scale(1.1);
+}
+
+.nav_item_icon_noty {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #e74c3c;
+    transition: all 0.2s ease;
+}
+
+.nav_item_icon_noty:hover {
+    transform: scale(1.1);
+}
+
+.nav_bar_item {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.site_title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.nav_nav_item {
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.nav_nav_item:hover {
+    background: rgba(144, 238, 144, 0.3);
+}
+
+.nav_nav_item_active {
+    background: rgba(144, 238, 144, 0.4);
+    font-weight: 600;
+}
+
+.brand-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    padding: 0 20px;
+    cursor: pointer;
+}

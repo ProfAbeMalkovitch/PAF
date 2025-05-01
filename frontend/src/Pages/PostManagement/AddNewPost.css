@@ -1,0 +1,109 @@
+.continer {
+  min-height: 100vh;
+  background: linear-gradient(135deg, rgba(144, 238, 144, 0.1), rgba(255, 255, 255, 0.1));
+}
+
+.continSection {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.from_continer {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 8rem auto;
+}
+
+.Auth_heading {
+  color: #2c3e50;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.from_data {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.Auth_formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.Auth_label {
+  color: #34495e;
+  font-weight: 500;
+}
+
+.Auth_input {
+  padding: 0.8rem;
+  border: 1px solid rgba(144, 238, 144, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+}
+
+.Auth_input:focus {
+  outline: none;
+  border-color: rgba(144, 238, 144, 0.8);
+  box-shadow: 0 0 0 2px rgba(144, 238, 144, 0.2);
+}
+
+.media_upload_zone {
+  border: 2px dashed rgba(144, 238, 144, 0.5);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.media_upload_zone:hover {
+  background: rgba(144, 238, 144, 0.1);
+}
+
+.media_previews {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.media_preview_item {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.media_file_se {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.Auth_button {
+  background: rgba(144, 238, 144, 0.8);
+  color: #fff;
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.Auth_button:hover {
+  background: rgba(144, 238, 144, 1);
+  transform: translateY(-2px);
+}
