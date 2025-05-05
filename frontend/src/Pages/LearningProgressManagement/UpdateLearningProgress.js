@@ -31,7 +31,7 @@ function UpdateLearningProgress() {
           setPreviewImage(`http://localhost:8080/learningProgress/images/${data.imageUrl}`);// Set preview image URL if image exists
         }
       } catch (error) {
-        console.error('Error fetching Learning Progress data:', error);
+        console.error('Error fetching Learning Progress data:', error);// Log error to console
         alert('Error loading learning progress data');
       }
     };
