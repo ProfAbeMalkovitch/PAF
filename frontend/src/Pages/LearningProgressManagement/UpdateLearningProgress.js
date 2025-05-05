@@ -19,7 +19,7 @@ function UpdateLearningProgress() {
   const [isDragging, setIsDragging] = useState(false);     // State for drag-and-drop status
 
   useEffect(() => {
-    const fetchLearningProgress = async () => {
+    const fetchLearningProgress = async () => {  // Function to fetch learning progress data
       try {
         const response = await fetch(`http://localhost:8080/learningProgress/${id}`);
         if (!response.ok) {
