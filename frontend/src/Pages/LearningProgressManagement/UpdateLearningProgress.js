@@ -14,7 +14,7 @@ function UpdateLearningProgress() {
     imageUrl: ''
   });
   const [selectedFile, setSelectedFile] = useState(null);  // State for selected image file
-  const [previewImage, setPreviewImage] = useState('');
+  const [previewImage, setPreviewImage] = useState('');    // State for image preview URL
   const [isLoading, setIsLoading] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
 
