@@ -32,7 +32,7 @@ function UpdateLearningProgress() {
         }
       } catch (error) {
         console.error('Error fetching Learning Progress data:', error);// Log error to console
-        alert('Error loading learning progress data');
+        alert('Error loading learning progress data');// Alert user about the error
       }
     };
     fetchLearningProgress();
