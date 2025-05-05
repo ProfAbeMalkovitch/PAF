@@ -60,8 +60,8 @@ const handleDelete = async (id) => {
           <div className='post-card-container'>{/* Container for post cards */}
             {filteredData.length === 0 ? ({/* Conditional rendering if no posts */}
               <div className='not-found-box glass-effect'>{/* Box shown when no posts found */}
-                <div className='not-found-img'></div>
-                <p className='not-found-msg'>No posts found. Please create a new post.</p>
+                <div className='not-found-img'></div> 
+                <p className='not-found-msg'>No posts found. Please create a new post.</p> 
                 <button
                   className='create-post-btn glass-effect'
                   onClick={() => (window.location.href = '/addLearningProgress')}
@@ -252,5 +252,5 @@ const handleDelete = async (id) => {
     </div>
   );
 }
-
+//
 export default MyLearningProgress;
