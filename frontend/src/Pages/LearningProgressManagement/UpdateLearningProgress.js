@@ -28,7 +28,7 @@ function UpdateLearningProgress() {
         const data = await response.json();//Parse JSON response
         setFormData(data);// Set fetched data to form state
         if (data.imageUrl) {
-          setPreviewImage(`http://localhost:8080/learningProgress/images/${data.imageUrl}`);
+          setPreviewImage(`http://localhost:8080/learningProgress/images/${data.imageUrl}`);// Set preview image URL if image exists
         }
       } catch (error) {
         console.error('Error fetching Learning Progress data:', error);
