@@ -82,7 +82,7 @@
         </plugins>
     </build>
 
-    <!-- Optional: Explicit Reposi
+    <!-- Optional: Explicit Re
     <repositories>
         <repository>
             <id>central</id>
