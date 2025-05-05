@@ -25,7 +25,7 @@ function UpdateLearningProgress() {
         if (!response.ok) {
           throw new Error('Failed to fetch learning progress');// Throw error if fetch fails
         }
-        const data = await response.json();
+        const data = await response.json();//Parse JSON response
         setFormData(data);
         if (data.imageUrl) {
           setPreviewImage(`http://localhost:8080/learningProgress/images/${data.imageUrl}`);
