@@ -50,7 +50,7 @@ const handleDelete = async (id) => {
 };
 
   return (
-    <div className="app-background">
+    <div className="app-background">{/* Main app background */}
       <div className='container'>
         <NavBar />
         <div className='content-section'>
