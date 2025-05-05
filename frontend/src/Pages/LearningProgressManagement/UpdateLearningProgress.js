@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';// Import React and hooks
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom'; // Import useParams to get route parameters
 import NavBar from '../../Components/NavBar/NavBar';
 
 function UpdateLearningProgress() {
