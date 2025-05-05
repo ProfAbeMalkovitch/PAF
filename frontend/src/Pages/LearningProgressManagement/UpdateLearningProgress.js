@@ -16,7 +16,7 @@ function UpdateLearningProgress() {
   const [selectedFile, setSelectedFile] = useState(null);  // State for selected image file
   const [previewImage, setPreviewImage] = useState('');    // State for image preview URL
   const [isLoading, setIsLoading] = useState(false);       // State for loading status
-  const [isDragging, setIsDragging] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);     // State for drag-and-drop status
 
   useEffect(() => {
     const fetchLearningProgress = async () => {
