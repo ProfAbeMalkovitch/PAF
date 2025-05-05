@@ -51,7 +51,7 @@ const handleDelete = async (id) => {
 
   return (
     <div className="app-background">{/* Main app background */}
-      <div className='container'>
+      <div className='container'>{/* Container for layout */}
         <NavBar />
         <div className='content-section'>
           <div className='add-new-btn glass-effect' onClick={() => (window.location.href = '/addLearningProgress')}>
