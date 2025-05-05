@@ -57,7 +57,7 @@ const handleDelete = async (id) => {
           <div className='add-new-btn glass-effect' onClick={() => (window.location.href = '/addLearningProgress')}>{/* Button to add new post */}
             <IoIosCreate className='add-new-btn-icon' />{/* Icon for the add new button */}
           </div>
-          <div className='post-card-container'>
+          <div className='post-card-container'>{/* Container for post cards */}
             {filteredData.length === 0 ? (
               <div className='not-found-box glass-effect'>
                 <div className='not-found-img'></div>
