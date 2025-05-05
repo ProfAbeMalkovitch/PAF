@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { FaEdit } from "react-icons/fa";
-import { RiDeleteBin6Fill } from "react-icons/ri";
-import NavBar from '../../Components/NavBar/NavBar'
-import { IoIosCreate } from "react-icons/io";
+import React, { useEffect, useState } from 'react'; // Import React and hooks
+import { FaEdit } from "react-icons/fa"; // Import edit icon
+import { RiDeleteBin6Fill } from "react-icons/ri"; // Import delete icon
+import NavBar from '../../Components/NavBar/NavBar' // Import NavBar component
+import { IoIosCreate } from "react-icons/io"; // Import create icon
 
 function MyLearningProgress() {
-  const [progressData, setProgressData] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
-  const [showMyPosts, setShowMyPosts] = useState(false); // Track filter mode
-  const userId = localStorage.getItem('userID');
+  const [progressData, setProgressData] = useState([]); // State for all progress data
+  const [filteredData, setFilteredData] = useState([]); // State for filtered data
+  const [showMyPosts, setShowMyPosts] = useState(false); // State to track filter mode
+  const userId = localStorage.getItem('userID'); // Get user ID from local storage
 
   useEffect(() => {
     fetch('http://localhost:8080/learningProgress')
