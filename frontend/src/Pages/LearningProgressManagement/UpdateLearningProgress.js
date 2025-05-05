@@ -13,7 +13,7 @@ function UpdateLearningProgress() {
     postOwnerName: '',
     imageUrl: ''
   });
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);  // State for selected image file
   const [previewImage, setPreviewImage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
