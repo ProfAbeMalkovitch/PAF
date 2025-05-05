@@ -59,7 +59,7 @@ const handleDelete = async (id) => {
           </div>
           <div className='post-card-container'>{/* Container for post cards */}
             {filteredData.length === 0 ? ({/* Conditional rendering if no posts */}
-              <div className='not-found-box glass-effect'>
+              <div className='not-found-box glass-effect'>{/* Box shown when no posts found */}
                 <div className='not-found-img'></div>
                 <p className='not-found-msg'>No posts found. Please create a new post.</p>
                 <button
