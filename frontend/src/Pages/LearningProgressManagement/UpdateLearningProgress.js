@@ -21,9 +21,9 @@ function UpdateLearningProgress() {
   useEffect(() => {
     const fetchLearningProgress = async () => {  // Function to fetch learning progress data
       try {
-        const response = await fetch(`http://localhost:8080/learningProgress/${id}`);
+        const response = await fetch(`http://localhost:8080/learningProgress/${id}`);// Fetch data by ID
         if (!response.ok) {
-          throw new Error('Failed to fetch learning progress');
+          throw new Error('Failed to fetch learning progress');// Throw error if fetch fails
         }
         const data = await response.json();
         setFormData(data);
