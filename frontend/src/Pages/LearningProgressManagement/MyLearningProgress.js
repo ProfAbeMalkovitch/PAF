@@ -53,7 +53,7 @@ const handleDelete = async (id) => {
     <div className="app-background">{/* Main app background */}
       <div className='container'>{/* Container for layout */}
         <NavBar />{/* Navigation bar component */}
-        <div className='content-section'>
+        <div className='content-section'>{/* Section containing content */}
           <div className='add-new-btn glass-effect' onClick={() => (window.location.href = '/addLearningProgress')}>
             <IoIosCreate className='add-new-btn-icon' />
           </div>
