@@ -58,7 +58,7 @@ const handleDelete = async (id) => {
             <IoIosCreate className='add-new-btn-icon' />{/* Icon for the add new button */}
           </div>
           <div className='post-card-container'>{/* Container for post cards */}
-            {filteredData.length === 0 ? (
+            {filteredData.length === 0 ? ({/* Conditional rendering if no posts */}
               <div className='not-found-box glass-effect'>
                 <div className='not-found-img'></div>
                 <p className='not-found-msg'>No posts found. Please create a new post.</p>
