@@ -9,108 +9,108 @@ import NavBar from '../../Components/NavBar/NavBar';
 import { HiCalendarDateRange } from "react-icons/hi2";
 
 function UpdateLearningPost() {
-  const { id } = useParams();
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [contentURL, setContentURL] = useState('');
-  const [tags, setTags] = useState([]);
-  const [tagInput, setTagInput] = useState('');
-  const [image, setImage] = useState(null);
-  const [imagePreview, setImagePreview] = useState(null);
-  const [existingImage, setExistingImage] = useState('');
-  const [templateID, setTemplateID] = useState(null);
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
-  const [category, setCategory] = useState('');
-  const [isDragging, setIsDragging] = useState(false);
-  const [imageError, setImageError] = useState('');
-  const [isPreviewZoomed, setIsPreviewZoomed] = useState(false);
-  const [showContentURLInput, setShowContentURLInput] = useState(true);
-  const [showImageUploadInput, setShowImageUploadInput] = useState(true);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { id } = useParams(); // Get ID from URL params
+  const [title, setTitle] = useState(''); // State for post title
+  const [description, setDescription] = useState(''); // State for post description
+  const [contentURL, setContentURL] = useState(''); // State for content URL
+  const [tags, setTags] = useState([]); // State for tags array
+  const [tagInput, setTagInput] = useState(''); // State for tag input field
+  const [image, setImage] = useState(null); // State for uploaded image file
+  const [imagePreview, setImagePreview] = useState(null); // State for image preview URL
+  const [existingImage, setExistingImage] = useState(''); // State for existing image URL
+  const [templateID, setTemplateID] = useState(null); // State for template ID
+  const [startDate, setStartDate] = useState(''); // State for start date
+  const [endDate, setEndDate] = useState(''); // State for end date
+  const [category, setCategory] = useState(''); // State for category
+  const [isDragging, setIsDragging] = useState(false); // State for drag-and-drop indicator
+  const [imageError, setImageError] = useState(''); // State for image validation errors
+  const [isPreviewZoomed, setIsPreviewZoomed] = useState(false); // State for zoomed preview
+  const [showContentURLInput, setShowContentURLInput] = useState(true); // State to show/hide URL input
+  const [showImageUploadInput, setShowImageUploadInput] = useState(true); // State to show/hide image upload
+  const [isSubmitting, setIsSubmitting] = useState(false); // State for form submission status
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/learningPlan/${id}`);
+        const response = await axios.get(`http://localhost:8080/learningPlan/${id}`); // Fetch post data
         const { title, description, contentURL, tags, imageUrl, templateID, startDate, endDate, category } = response.data;
-        setTitle(title);
-        setDescription(description);
-        setContentURL(contentURL);
-        setTags(tags);
-        setExistingImage(imageUrl);
-        setTemplateID(templateID);
-        setStartDate(startDate);
-        setEndDate(endDate);
-        setCategory(category);
+        setTitle(title); // Set fetched title
+        setDescription(description); // Set fetched description
+        setContentURL(contentURL); // Set fetched content URL
+        setTags(tags); // Set fetched tags
+        setExistingImage(imageUrl); // Set fetched existing image URL
+        setTemplateID(templateID); // Set fetched template ID
+        setStartDate(startDate); // Set fetched start date
+        setEndDate(endDate); // Set fetched end date
+        setCategory(category); // Set fetched category
       } catch (error) {
-        console.error('Error fetching post:', error);
+        console.error('Error fetching post:', error); // Log fetch error
       }
     };
 
-    fetchPost();
-  }, [id]);
+    fetchPost(); // Call fetch function
+  }, [id]); // Run effect when ID changes
 
   const validateImage = (file) => {
-    setImageError('');
-    const maxSize = 5 * 1024 * 1024;
+    setImageError(''); // Clear previous errors
+    const maxSize = 5 * 1024 * 1024; // 5MB max size
     if (file.size > maxSize) {
-      setImageError('Image size must be less than 5MB');
-      return false;
+      setImageError('Image size must be less than 5MB'); // Set size error
+      return false; // Validation failed
     }
     if (!file.type.startsWith('image/')) {
-      setImageError('File must be an image');
-      return false;
+      setImageError('File must be an image'); // Set type error
+      return false; // Validation failed
     }
-    return true;
+    return true; // Validation passed
   };
 
   const handleDragEnter = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsDragging(true);
+    e.preventDefault(); // Prevent default behavior
+    e.stopPropagation(); // Stop event bubbling
+    setIsDragging(true); // Set dragging state to true
   };
 
   const handleDragLeave = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsDragging(false);
+    e.preventDefault(); // Prevent default behavior
+    e.stopPropagation(); // Stop event bubbling
+    setIsDragging(false); // Set dragging state to false
   };
 
   const handleDragOver = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+    e.preventDefault(); // Prevent default behavior
+    e.stopPropagation(); // Stop event bubbling
   };
 
   const handleDrop = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsDragging(false);
+    e.preventDefault(); // Prevent default behavior
+    e.stopPropagation(); // Stop event bubbling
+    setIsDragging(false); // Set dragging state to false
 
-    const file = e.dataTransfer.files[0];
-    if (file && validateImage(file)) {
-      setImage(file);
-      setImagePreview(URL.createObjectURL(file));
+    const file = e.dataTransfer.files[0]; // Get dropped file
+    if (file && validateImage(file)) { // Validate file
+      setImage(file); // Set image file
+      setImagePreview(URL.createObjectURL(file)); // Create and set preview URL
     }
   };
 
   const handleAddTag = () => {
-    if (tagInput.trim() !== '') {
-      setTags([...tags, tagInput.trim()]);
-      setTagInput('');
+    if (tagInput.trim() !== '') { // Check if input is not empty
+      setTags([...tags, tagInput.trim()]); // Add new tag to array
+      setTagInput(''); // Clear input field
     }
   };
 
   const handleDeleteTag = (index) => {
-    const updatedTags = tags.filter((_, i) => i !== index);
-    setTags(updatedTags);
+    const updatedTags = tags.filter((_, i) => i !== index); // Filter out tag by index
+    setTags(updatedTags); // Update tags array
   };
 
   const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file && validateImage(file)) {
-      setImage(file);
-      setImagePreview(URL.createObjectURL(file));
+    const file = e.target.files[0]; // Get selected file
+    if (file && validateImage(file)) { // Validate file
+      setImage(file); // Set image file
+      setImagePreview(URL.createObjectURL(file)); // Create and set preview URL
     }
   };
 

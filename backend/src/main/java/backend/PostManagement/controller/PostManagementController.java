@@ -1,55 +1,55 @@
 package backend.PostManagement.controller;
 
-import backend.exception.ResourceNotFoundException;
-import backend.PostManagement.model.Comment;
-import backend.Notification.model.NotificationModel;
-import backend.PostManagement.model.PostManagementModel;
-import backend.Notification.repository.NotificationRepository;
-import backend.PostManagement.repository.PostManagementRepository;
-import backend.User.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MaxUploadSizeExceededException;
-import org.springframework.web.multipart.MultipartFile;
+import backend.exception.ResourceNotFoundException; // Import for custom exception
+import backend.PostManagement.model.Comment; // Import for Comment model
+import backend.Notification.model.NotificationModel; // Import for Notification model
+import backend.PostManagement.model.PostManagementModel; // Import for Post model
+import backend.Notification.repository.NotificationRepository; // Import for Notification repository
+import backend.PostManagement.repository.PostManagementRepository; // Import for Post repository
+import backend.User.repository.UserRepository; // Import for User repository
+import org.springframework.beans.factory.annotation.Autowired; // Import for Spring autowiring
+import org.springframework.beans.factory.annotation.Value; // Import for reading properties
+import org.springframework.http.HttpStatus; // Import for HTTP status codes
+import org.springframework.http.ResponseEntity; // Import for ResponseEntity
+import org.springframework.util.StringUtils; // Import for String utilities
+import org.springframework.web.bind.annotation.*; // Import for Spring MVC annotations
+import org.springframework.web.multipart.MaxUploadSizeExceededException; // Import for file size exception
+import org.springframework.web.multipart.MultipartFile; // Import for handling file uploads
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-import java.util.stream.Collectors;
+import java.io.File; // Import for File handling
+import java.io.IOException; // Import for IO exceptions
+import java.nio.file.Files; // Import for file operations
+import java.nio.file.Path; // Import for Path operations
+import java.nio.file.Paths; // Import for Paths utility
+import java.time.LocalDateTime; // Import for date/time handling
+import java.time.format.DateTimeFormatter; // Import for date formatting
+import java.util.List; // Import for List collection
+import java.util.Map; // Import for Map collection
+import java.util.UUID; // Import for UUID generation
+import java.util.stream.Collectors; // Import for stream operations
 
 @RestController
 @RequestMapping("/posts")
 public class PostManagementController {
-    @Autowired
+    @Autowired // Injects Post repository dependency
     private PostManagementRepository postRepository;
 
-    @Autowired
+    @Autowired // Injects User repository dependency
     private UserRepository userRepository;
 
-    @Autowired
+    @Autowired // Injects Notification repository dependency
     private NotificationRepository notificationRepository;
 
-    @Value("${media.upload.dir}")
+    @Value("${media.upload.dir}") // Injects media upload directory from properties
     private String uploadDir;
 
-    @PostMapping
+    @PostMapping // Handles POST requests to create a new post
     public ResponseEntity<?> createPost(
-            @RequestParam String userID,
-            @RequestParam String title,
-            @RequestParam String description,
-            @RequestParam String category, // New parameter for category
-            @RequestParam List<MultipartFile> mediaFiles) {
+            @RequestParam String userID, // User ID parameter
+            @RequestParam String title, // Post title parameter
+            @RequestParam String description, // Post description parameter
+            @RequestParam String category, // Post category parameter
+            @RequestParam List<MultipartFile> mediaFiles) { // List of media files
 
         if (mediaFiles.size() < 1 || mediaFiles.size() > 3) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("You must upload between 1 and 3 media files.");

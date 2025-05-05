@@ -9,17 +9,17 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-@Configuration
-@EnableWebSecurity
+@Configuration // Marks this class as a Spring configuration class
+@EnableWebSecurity // Enables Spring Security's web security support
 public class SecurityConfig {
 
-    @Bean
+    @Bean // Defines a bean to be managed by Spring container
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf().disable()
-                .cors().and() // Enable CORS
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(
+                .csrf().disable() // Disables CSRF protection
+                .cors().and() // Enables CORS and combines with next configuration
+                .authorizeHttpRequests(auth -> auth // Configures authorization for HTTP requests
+                        .requestMatchers( // Specifies paths that don't need authentication
                                 "/login/**",
                                 "/oauth2/**",
                                 "/user/**",
@@ -30,23 +30,23 @@ public class SecurityConfig {
                                 "/learningPlan/**",
                                 "/learningProgress/**",
                                 "/notifications/**"
-                        ).permitAll()
-                        .anyRequest().authenticated()
+                        ).permitAll() // Allows access to above paths without authentication
+                        .anyRequest().authenticated() // Requires authentication for any other request
                 )
-                .oauth2Login(oauth2 -> oauth2
-                        .defaultSuccessUrl("/oauth2/success", true)
+                .oauth2Login(oauth2 -> oauth2 // Configures OAuth2 login
+                        .defaultSuccessUrl("/oauth2/success", true) // Sets default success URL after OAuth2 login
                 );
-        return http.build();
+        return http.build(); // Builds and returns the security filter chain
     }
 
-    @Bean
+    @Bean // Defines a bean for CORS configuration
     public CorsFilter corsFilter() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        CorsConfiguration config = new CorsConfiguration();
-        config.addAllowedOrigin("http://localhost:3000"); // Allow requests from the frontend
-        config.addAllowedMethod("*"); // Allow all HTTP methods
-        config.addAllowedHeader("*"); // Allow all headers
-        source.registerCorsConfiguration("/**", config);
-        return new CorsFilter(source);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource(); // Creates CORS configuration source
+        CorsConfiguration config = new CorsConfiguration(); // Creates CORS configuration
+        config.addAllowedOrigin("http://localhost:3000"); // Allows requests from frontend origin
+        config.addAllowedMethod("*"); // Allows all HTTP methods
+        config.addAllowedHeader("*"); // Allows all headers
+        source.registerCorsConfiguration("/**", config); // Applies CORS config to all paths
+        return new CorsFilter(source); // Returns new CORS filter with configuration
     }
 }

@@ -1,42 +1,42 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import './post.css';
-import { FaEdit } from "react-icons/fa";
-import { RiDeleteBin6Fill } from "react-icons/ri";
-import { IoIosCreate } from "react-icons/io";
-import NavBar from '../../Components/NavBar/NavBar';
-import { HiCalendarDateRange } from "react-icons/hi2";
+import React, { useEffect, useState } from 'react'; // Import React hooks
+import axios from 'axios'; // Import axios for HTTP requests
+import './post.css'; // Import CSS for styling
+import { FaEdit } from "react-icons/fa"; // Import edit icon
+import { RiDeleteBin6Fill } from "react-icons/ri"; // Import delete icon
+import { IoIosCreate } from "react-icons/io"; // Import create icon
+import NavBar from '../../Components/NavBar/NavBar'; // Import NavBar component
+import { HiCalendarDateRange } from "react-icons/hi2"; // Import calendar icon
 
 function MyLearningPlan() {
-  const [posts, setPosts] = useState([]);
-  const [filteredPosts, setFilteredPosts] = useState([]);
-  const [searchOwnerName, setSearchOwnerName] = useState('');
-  const userId = localStorage.getItem('userID');
+  const [posts, setPosts] = useState([]); // State for storing posts
+  const [filteredPosts, setFilteredPosts] = useState([]); // State for filtered posts
+  const [searchOwnerName, setSearchOwnerName] = useState(''); // State for search input
+  const userId = localStorage.getItem('userID'); // Get user ID from localStorage
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/learningPlan');
+        const response = await axios.get('http://localhost:8080/learningPlan'); // Fetch posts from API
         const userPosts = response.data.filter(post => post.postOwnerID === userId); // Filter posts by userID
-        setPosts(userPosts);
-        setFilteredPosts(userPosts); // Initially show filtered posts
+        setPosts(userPosts); // Set posts state
+        setFilteredPosts(userPosts); // Set filtered posts state
       } catch (error) {
-        console.error('Error fetching posts:', error);
+        console.error('Error fetching posts:', error); // Log error if fetch fails
       }
     };
 
-    fetchPosts();
-  }, []); // Ensure this runs only once on component mount
+    fetchPosts(); // Call fetchPosts function
+  }, []); // Empty dependency array ensures this runs only once on mount
 
   const getEmbedURL = (url) => {
     try {
-      if (url.includes('youtube.com/watch')) {
-        const videoId = new URL(url).searchParams.get('v');
-        return `https://www.youtube.com/embed/${videoId}`;
+      if (url.includes('youtube.com/watch')) { // Check if URL is YouTube watch link
+        const videoId = new URL(url).searchParams.get('v'); // Extract video ID
+        return `https://www.youtube.com/embed/${videoId}`; // Return embed URL
       }
-      if (url.includes('youtu.be/')) {
-        const videoId = url.split('youtu.be/')[1];
-        return `https://www.youtube.com/embed/${videoId}`;
+      if (url.includes('youtu.be/')) { // Check if URL is shortened YouTube link
+        const videoId = url.split('youtu.be/')[1]; // Extract video ID
+        return `https://www.youtube.com/embed/${videoId}`; // Return embed URL
       }
       return url; // Return the original URL if it's not a YouTube link
     } catch (error) {

@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import './post.css';
-import { FaEdit } from "react-icons/fa";
-import { RiDeleteBin6Fill } from "react-icons/ri";
-import { IoIosCreate } from "react-icons/io";
-import NavBar from '../../Components/NavBar/NavBar';
-import { HiCalendarDateRange } from "react-icons/hi2";
+import React, { useEffect, useState } from 'react'; // Import React hooks
+import axios from 'axios'; // Import axios for HTTP requests
+import './post.css'; // Import CSS styles
+import { FaEdit } from "react-icons/fa"; // Import edit icon
+import { RiDeleteBin6Fill } from "react-icons/ri"; // Import delete icon
+import { IoIosCreate } from "react-icons/io"; // Import create icon
+import NavBar from '../../Components/NavBar/NavBar'; // Import NavBar component
+import { HiCalendarDateRange } from "react-icons/hi2"; // Import calendar icon
 
 function AllLearningPlan() {
-  const [posts, setPosts] = useState([]);
-  const [filteredPosts, setFilteredPosts] = useState([]);
-  const [searchOwnerName, setSearchOwnerName] = useState('');
-  const userId = localStorage.getItem('userID');
+  const [posts, setPosts] = useState([]); // State for storing all posts
+  const [filteredPosts, setFilteredPosts] = useState([]); // State for filtered posts
+  const [searchOwnerName, setSearchOwnerName] = useState(''); // State for search input
+  const userId = localStorage.getItem('userID'); // Get user ID from localStorage
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/learningPlan');
-        setPosts(response.data);
+        const response = await axios.get('http://localhost:8080/learningPlan'); // Fetch posts from API
+        setPosts(response.data); // Set all posts
         setFilteredPosts(response.data); // Initially show all posts
       } catch (error) {
-        console.error('Error fetching posts:', error);
+        console.error('Error fetching posts:', error); // Log error if fetch fails
       }
     };
 
