@@ -35,7 +35,7 @@ function UpdateLearningProgress() {
         alert('Error loading learning progress data');// Alert user about the error
       }
     };
-    fetchLearningProgress();
+    fetchLearningProgress();// Call fetch function on component mount
   }, [id]);
 
   const handleInputChange = (e) => {
