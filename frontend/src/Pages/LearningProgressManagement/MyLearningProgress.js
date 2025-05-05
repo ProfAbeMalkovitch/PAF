@@ -55,7 +55,7 @@ const handleDelete = async (id) => {
         <NavBar />{/* Navigation bar component */}
         <div className='content-section'>{/* Section containing content */}
           <div className='add-new-btn glass-effect' onClick={() => (window.location.href = '/addLearningProgress')}>{/* Button to add new post */}
-            <IoIosCreate className='add-new-btn-icon' />
+            <IoIosCreate className='add-new-btn-icon' />{/* Icon for the add new button */}
           </div>
           <div className='post-card-container'>
             {filteredData.length === 0 ? (
