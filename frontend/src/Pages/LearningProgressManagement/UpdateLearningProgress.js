@@ -36,7 +36,7 @@ function UpdateLearningProgress() {
       }
     };
     fetchLearningProgress();// Call fetch function on component mount
-  }, [id]);
+  }, [id]);// Re-run effect if 'id' changes
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
