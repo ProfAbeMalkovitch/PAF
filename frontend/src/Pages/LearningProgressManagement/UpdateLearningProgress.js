@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';// Import React and hooks
 import { useParams } from 'react-router-dom'; // Import useParams to get route parameters
 import NavBar from '../../Components/NavBar/NavBar';  // Import NavBar component
 
-function UpdateLearningProgress() {
+function UpdateLearningProgress() {  // Get the 'id' parameter from the URL
   const { id } = useParams();
   const [formData, setFormData] = useState({
     title: '',
