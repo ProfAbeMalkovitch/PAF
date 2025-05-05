@@ -11,15 +11,19 @@ function MyLearningProgress() {
   const userId = localStorage.getItem('userID'); // Get user ID from local storage
 
   useEffect(() => {
+    // Fetch learning progress data from the server
     fetch('http://localhost:8080/learningProgress')
+      // Convert response to JSON
       .then((response) => response.json())
+      // Filter data by postOwnerID matching userId and update state
       .then((data) => {
         const userFilteredData = data.filter((progress) => progress.postOwnerID === userId);
         setProgressData(userFilteredData);
         setFilteredData(userFilteredData);
       })
+      // Log any errors during fetch
       .catch((error) => console.error('Error fetching Learning Progress data:', error));
-  }, []);
+  }, []); // Empty dependency array means this runs once on component mount
 
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this Learning Progress?')) {
