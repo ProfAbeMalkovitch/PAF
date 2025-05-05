@@ -25,23 +25,29 @@ function MyLearningProgress() {
       .catch((error) => console.error('Error fetching Learning Progress data:', error));
   }, []); // Empty dependency array means this runs once on component mount
 
-  const handleDelete = async (id) => {
-    if (window.confirm('Are you sure you want to delete this Learning Progress?')) {
-      try {
-        const response = await fetch(`http://localhost:8080/learningProgress/${id}`, {
-          method: 'DELETE',
-        });
-        if (response.ok) {
-          alert('Learning Progress deleted successfully!');
-          setFilteredData(filteredData.filter((progress) => progress.id !== id));
-        } else {
-          alert('Failed to delete Learning Progress.');
-        }
-      } catch (error) {
-        console.error('Error deleting Learning Progress:', error);
+ // Function to handle deletion of a learning progress item
+const handleDelete = async (id) => {
+  // Confirm deletion with the user
+  if (window.confirm('Are you sure you want to delete this Learning Progress?')) {
+    try {
+      // Send DELETE request to backend API
+      const response = await fetch(`http://localhost:8080/learningProgress/${id}`, {
+        method: 'DELETE',
+      });
+      // If deletion is successful, alert user and update state
+      if (response.ok) {
+        alert('Learning Progress deleted successfully!');
+        setFilteredData(filteredData.filter((progress) => progress.id !== id));
+      } else {
+        // If deletion failed, alert user
+        alert('Failed to delete Learning Progress.');
       }
+    } catch (error) {
+      // Log error if request fails
+      console.error('Error deleting Learning Progress:', error);
     }
-  };
+  }
+};
 
   return (
     <div className="app-background">
