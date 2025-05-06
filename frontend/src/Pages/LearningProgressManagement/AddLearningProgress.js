@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import NavBar from '../../Components/NavBar/NavBar';
+import React, { useState, useEffect } from 'react'; // Import React and hooks
+import NavBar from '../../Components/NavBar/NavBar'; // Import NavBar component
 
-function AddLearningProgress() {
-  const [formData, setFormData] = useState({
+function AddLearningProgress() { // Define AddLearningProgress component
+  const [formData, setFormData] = useState({ // State for form data
     title: '',
     description: '',
     date: '',
@@ -10,35 +10,35 @@ function AddLearningProgress() {
     category: '',
     postOwnerName: '',
   });
-  const [image, setImage] = useState(null);
-  const [imagePreview, setImagePreview] = useState(null);
-  const [isDragging, setIsDragging] = useState(false);
+  const [image, setImage] = useState(null); // State for image file
+  const [imagePreview, setImagePreview] = useState(null); // State for image preview URL
+  const [isDragging, setIsDragging] = useState(false); // State for drag-and-drop status
 
-  const handleImageChange = (e) => {
+  const handleImageChange = (e) => { // Handle image selection via file input
     const file = e.target.files[0];
     setImage(file);
     setImagePreview(file ? URL.createObjectURL(file) : null);
   };
 
-  const handleDragEnter = (e) => {
+  const handleDragEnter = (e) => { // Handle drag enter event
     e.preventDefault();
     setIsDragging(true);
   };
 
-  const handleDragLeave = (e) => {
+  const handleDragLeave = (e) => { // Handle drag leave event
     e.preventDefault();
     setIsDragging(false);
   };
 
-  const handleDrop = (e) => {
+  const handleDrop = (e) => { // Handle drop event for image
     e.preventDefault();
     setIsDragging(false);
     const file = e.dataTransfer.files[0];
-    if (file && file.type.startsWith('image/')) {
+    if (file && file.type.startsWith('image/')) { // Check if file is an image
       setImage(file);
       setImagePreview(URL.createObjectURL(file));
     } else {
-      alert('Please upload an image file');
+      alert('Please upload an image file'); // Show alert for non-image files
     }
   };
 

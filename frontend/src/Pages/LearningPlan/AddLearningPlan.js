@@ -1,32 +1,32 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { IoMdAdd } from "react-icons/io";
-import './post.css';
-import './Templates.css'; // Import the updated CSS file
-import NavBar from '../../Components/NavBar/NavBar';
-import { FaVideo } from "react-icons/fa";
-import { FaImage } from "react-icons/fa";
-import { HiCalendarDateRange } from "react-icons/hi2";
+import React, { useState } from 'react'; // Import React and useState hook
+import axios from 'axios'; // Import axios for HTTP requests
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
+import { IoMdAdd } from "react-icons/io"; // Import add icon
+import './post.css'; // Import post CSS
+import './Templates.css'; // Import templates CSS
+import NavBar from '../../Components/NavBar/NavBar'; // Import NavBar component
+import { FaVideo } from "react-icons/fa"; // Import video icon
+import { FaImage } from "react-icons/fa"; // Import image icon
+import { HiCalendarDateRange } from "react-icons/hi2"; // Import calendar icon
 
 function AddLearningPlan() {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [contentURL, setContentURL] = useState('');
-  const [tags, setTags] = useState([]);
-  const [tagInput, setTagInput] = useState('');
-  const [image, setImage] = useState(null);
-  const [imagePreview, setImagePreview] = useState(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showContentURLInput, setShowContentURLInput] = useState(false);
-  const [showImageUploadInput, setShowImageUploadInput] = useState(false);
-  const [templateID, setTemplateID] = useState(null);
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
-  const [category, setCategory] = useState('');
-  const [isDragging, setIsDragging] = useState(false);
-  const [imageError, setImageError] = useState('');
-  const [isPreviewZoomed, setIsPreviewZoomed] = useState(false);
+  const [title, setTitle] = useState(''); // State for title input
+  const [description, setDescription] = useState(''); // State for description input
+  const [contentURL, setContentURL] = useState(''); // State for content URL input
+  const [tags, setTags] = useState([]); // State for tags array
+  const [tagInput, setTagInput] = useState(''); // State for tag input field
+  const [image, setImage] = useState(null); // State for image file
+  const [imagePreview, setImagePreview] = useState(null); // State for image preview URL
+  const [isSubmitting, setIsSubmitting] = useState(false); // State for submission loading
+  const [showContentURLInput, setShowContentURLInput] = useState(false); // State to toggle URL input
+  const [showImageUploadInput, setShowImageUploadInput] = useState(false); // State to toggle image upload
+  const [templateID, setTemplateID] = useState(null); // State for template ID
+  const [startDate, setStartDate] = useState(''); // State for start date
+  const [endDate, setEndDate] = useState(''); // State for end date
+  const [category, setCategory] = useState(''); // State for category
+  const [isDragging, setIsDragging] = useState(false); // State for drag-and-drop
+  const [imageError, setImageError] = useState(''); // State for image error messages
+  const [isPreviewZoomed, setIsPreviewZoomed] = useState(false); // State for zoomed preview
 
   const validateImage = (file) => {
     setImageError('');

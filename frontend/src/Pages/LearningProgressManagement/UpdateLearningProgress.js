@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import NavBar from '../../Components/NavBar/NavBar';
+import React, { useState, useEffect } from 'react';// Import React and hooks
+import { useParams } from 'react-router-dom'; // Import useParams to get route parameters
+import NavBar from '../../Components/NavBar/NavBar';  // Import NavBar component
 
-function UpdateLearningProgress() {
-  const { id } = useParams();
-  const [formData, setFormData] = useState({
+function UpdateLearningProgress() {  
+  const { id } = useParams();  // Get the 'id' parameter from the URL
+  const [formData, setFormData] = useState({// State to store form data
     title: '',
     description: '',
     date: '',
@@ -13,30 +13,30 @@ function UpdateLearningProgress() {
     postOwnerName: '',
     imageUrl: ''
   });
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [previewImage, setPreviewImage] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [isDragging, setIsDragging] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);  // State for selected image file
+  const [previewImage, setPreviewImage] = useState('');    // State for image preview URL
+  const [isLoading, setIsLoading] = useState(false);       // State for loading status
+  const [isDragging, setIsDragging] = useState(false);     // State for drag-and-drop status
 
   useEffect(() => {
-    const fetchLearningProgress = async () => {
+    const fetchLearningProgress = async () => {  // Function to fetch learning progress data
       try {
-        const response = await fetch(`http://localhost:8080/learningProgress/${id}`);
+        const response = await fetch(`http://localhost:8080/learningProgress/${id}`);// Fetch data by ID
         if (!response.ok) {
-          throw new Error('Failed to fetch learning progress');
+          throw new Error('Failed to fetch learning progress');// Throw error if fetch fails
         }
-        const data = await response.json();
-        setFormData(data);
+        const data = await response.json();//Parse JSON response
+        setFormData(data);// Set fetched data to form state
         if (data.imageUrl) {
-          setPreviewImage(`http://localhost:8080/learningProgress/images/${data.imageUrl}`);
+          setPreviewImage(`http://localhost:8080/learningProgress/images/${data.imageUrl}`);// Set preview image URL if image exists
         }
       } catch (error) {
-        console.error('Error fetching Learning Progress data:', error);
-        alert('Error loading learning progress data');
+        console.error('Error fetching Learning Progress data:', error);// Log error to console
+        alert('Error loading learning progress data');// Alert user about the error
       }
     };
-    fetchLearningProgress();
-  }, [id]);
+    fetchLearningProgress();// Call fetch function on component mount
+  }, [id]);// Re-run effect if 'id' changes
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

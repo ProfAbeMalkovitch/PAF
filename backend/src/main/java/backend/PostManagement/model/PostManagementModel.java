@@ -8,17 +8,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ArrayList;
 
-@Document(collection = "posts")
+@Document(collection = "posts") // Specifies MongoDB collection name
 public class PostManagementModel {
-    @Id
-    private String id;
-    private String userID;
-    private String title;
-    private String description;
-    private List<String> media;
-    private Map<String, Boolean> likes = new HashMap<>(); // Map to store user likes
-    private List<Comment> comments = new ArrayList<>(); // List to store comments
-    private String category; // New field for category
+    @Id // Marks this field as the document identifier
+    private String id; // Unique identifier for the post
+    private String userID; // ID of the user who created the post
+    private String title; // Title of the post
+    private String description; // Description/content of the post
+    private List<String> media; // List of media URLs associated with the post
+    private Map<String, Boolean> likes = new HashMap<>(); // Map to store user likes (userID -> like status)
+    private List<Comment> comments = new ArrayList<>(); // List to store comments on the post
+    private String category; // Category of the post
 
     public PostManagementModel(String id, String userID, String title, String description, List<String> media) {
         this.id = id;

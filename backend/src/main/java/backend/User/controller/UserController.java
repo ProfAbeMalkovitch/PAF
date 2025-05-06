@@ -1,36 +1,36 @@
 package backend.User.controller;
 
-import backend.exception.ResourceNotFoundException;
-import backend.Notification.model.NotificationModel;
-import backend.User.model.UserModel;
-import backend.LearningPlan.model.LearningPlanModel; // Import LearningPlanModel
-import backend.Notification.repository.NotificationRepository;
-import backend.User.repository.UserRepository;
-import backend.learningProgress.repository.LearningProgressRepository; // Import the repository
-import backend.LearningPlan.repository.LearningPlanRepository; // Import the repository
-import backend.PostManagement.repository.PostManagementRepository; // Import the repository
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
+import backend.exception.ResourceNotFoundException; // Import custom exception for resource not found
+import backend.Notification.model.NotificationModel; // Import Notification model class
+import backend.User.model.UserModel; // Import User model class
+import backend.LearningPlan.model.LearningPlanModel; // Import LearningPlan model class
+import backend.Notification.repository.NotificationRepository; // Import Notification repository
+import backend.User.repository.UserRepository; // Import User repository
+import backend.learningProgress.repository.LearningProgressRepository; // Import LearningProgress repository
+import backend.LearningPlan.repository.LearningPlanRepository; // Import LearningPlan repository
+import backend.PostManagement.repository.PostManagementRepository; // Import PostManagement repository
+import org.springframework.beans.factory.annotation.Autowired; // Import Spring Autowired annotation
+import org.springframework.http.HttpStatus; // Import HTTP status codes
+import org.springframework.http.ResponseEntity; // Import ResponseEntity class
+import org.springframework.mail.SimpleMailMessage; // Import SimpleMailMessage class
+import org.springframework.mail.javamail.JavaMailSender; // Import JavaMailSender interface
+import org.springframework.util.StringUtils; // Import StringUtils utility class
+import org.springframework.web.bind.annotation.*; // Import Spring web annotations
+import org.springframework.web.multipart.MultipartFile; // Import MultipartFile for file uploads
+import org.springframework.core.io.Resource; // Import Resource interface
+import org.springframework.core.io.UrlResource; // Import UrlResource class
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.io.File; // Import File class
+import java.io.IOException; // Import IOException
+import java.nio.file.Files; // Import Files utility class
+import java.nio.file.Path; // Import Path interface
+import java.time.LocalDateTime; // Import LocalDateTime class
+import java.time.format.DateTimeFormatter; // Import DateTimeFormatter class
+import java.util.ArrayList; // Import ArrayList class
+import java.util.HashMap; // Import HashMap class
+import java.util.List; // Import List interface
+import java.util.Map; // Import Map interface
+import java.util.UUID; // Import UUID class
 
 @RestController
 @CrossOrigin("http://localhost:3000")

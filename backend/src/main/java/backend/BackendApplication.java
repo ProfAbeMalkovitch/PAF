@@ -11,33 +11,32 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 import java.util.Properties;
 
-@SpringBootApplication(
-		exclude = {
+@SpringBootApplication( // Main Spring Boot application annotation
+		exclude = { // Excluding auto-configuration classes for databases
 				DataSourceAutoConfiguration.class,
 				DataSourceTransactionManagerAutoConfiguration.class,
 				HibernateJpaAutoConfiguration.class
 		}
 )
 public class BackendApplication {
-	public static void main(String[] args) {
+	public static void main(String[] args) { // Main method to start the application
 		SpringApplication.run(BackendApplication.class, args);
 	}
 
-	@Bean
+	@Bean // Defines a Spring bean for JavaMailSender
 	public JavaMailSender javaMailSender() {
-		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-		mailSender.setHost("smtp.gmail.com");
-		mailSender.setPort(587);
-		mailSender.setUsername("arshathofficial31@gmail.com");//add your email here
-		mailSender.setPassword("Arshath31@#");//add your password here
+		JavaMailSenderImpl mailSender = new JavaMailSenderImpl(); // Create mail sender instance
+		mailSender.setHost("smtp.gmail.com"); // Set SMTP host
+		mailSender.setPort(587); // Set SMTP port
+		mailSender.setUsername("arshathofficial31@gmail.com"); // Set email username
+		mailSender.setPassword("Arshath31@#"); // Set email password
 
+		Properties props = mailSender.getJavaMailProperties(); // Get mail properties
+		props.put("mail.transport.protocol", "smtp"); // Set protocol
+		props.put("mail.smtp.auth", "true"); // Enable authentication
+		props.put("mail.smtp.starttls.enable", "true"); // Enable STARTTLS
+		props.put("mail.debug", "true"); // Enable debug mode
 
-		Properties props = mailSender.getJavaMailProperties();
-		props.put("mail.transport.protocol", "smtp");
-		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.debug", "true");
-
-		return mailSender;
+		return mailSender; // Return configured mail sender
 	}
 }

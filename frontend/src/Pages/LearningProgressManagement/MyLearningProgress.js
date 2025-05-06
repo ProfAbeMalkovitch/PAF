@@ -1,57 +1,67 @@
-import React, { useEffect, useState } from 'react';
-import { FaEdit } from "react-icons/fa";
-import { RiDeleteBin6Fill } from "react-icons/ri";
-import NavBar from '../../Components/NavBar/NavBar'
-import { IoIosCreate } from "react-icons/io";
+import React, { useEffect, useState } from 'react'; // Import React and hooks
+import { FaEdit } from "react-icons/fa"; // Import edit icon
+import { RiDeleteBin6Fill } from "react-icons/ri"; // Import delete icon
+import NavBar from '../../Components/NavBar/NavBar' // Import NavBar component
+import { IoIosCreate } from "react-icons/io"; // Import create icon
 
 function MyLearningProgress() {
-  const [progressData, setProgressData] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
-  const [showMyPosts, setShowMyPosts] = useState(false); // Track filter mode
-  const userId = localStorage.getItem('userID');
+  const [progressData, setProgressData] = useState([]); // State for all progress data
+  const [filteredData, setFilteredData] = useState([]); // State for filtered data
+  const [showMyPosts, setShowMyPosts] = useState(false); // State to track filter mode
+  const userId = localStorage.getItem('userID'); // Get user ID from local storage
 
   useEffect(() => {
+    // Fetch learning progress data from the server
     fetch('http://localhost:8080/learningProgress')
+      // Convert response to JSON
       .then((response) => response.json())
+      // Filter data by postOwnerID matching userId and update state
       .then((data) => {
         const userFilteredData = data.filter((progress) => progress.postOwnerID === userId);
         setProgressData(userFilteredData);
         setFilteredData(userFilteredData);
       })
+      // Log any errors during fetch
       .catch((error) => console.error('Error fetching Learning Progress data:', error));
-  }, []);
+  }, []); // Empty dependency array means this runs once on component mount
 
-  const handleDelete = async (id) => {
-    if (window.confirm('Are you sure you want to delete this Learning Progress?')) {
-      try {
-        const response = await fetch(`http://localhost:8080/learningProgress/${id}`, {
-          method: 'DELETE',
-        });
-        if (response.ok) {
-          alert('Learning Progress deleted successfully!');
-          setFilteredData(filteredData.filter((progress) => progress.id !== id));
-        } else {
-          alert('Failed to delete Learning Progress.');
-        }
-      } catch (error) {
-        console.error('Error deleting Learning Progress:', error);
+ // Function to handle deletion of a learning progress item
+const handleDelete = async (id) => {
+  // Confirm deletion with the user
+  if (window.confirm('Are you sure you want to delete this Learning Progress?')) {
+    try {
+      // Send DELETE request to backend API
+      const response = await fetch(`http://localhost:8080/learningProgress/${id}`, {
+        method: 'DELETE',
+      });
+      // If deletion is successful, alert user and update state
+      if (response.ok) {
+        alert('Learning Progress deleted successfully!');
+        setFilteredData(filteredData.filter((progress) => progress.id !== id));
+      } else {
+        // If deletion failed, alert user
+        alert('Failed to delete Learning Progress.');
       }
+    } catch (error) {
+      // Log error if request fails
+      console.error('Error deleting Learning Progress:', error);
     }
-  };
+  }
+};
 
   return (
-    <div className="app-background">
-      <div className='container'>
-        <NavBar />
-        <div className='content-section'>
-          <div className='add-new-btn glass-effect' onClick={() => (window.location.href = '/addLearningProgress')}>
-            <IoIosCreate className='add-new-btn-icon' />
+    <div className="app-background">{/* Main app background */}
+      <div className='container'>{/* Container for layout */}
+        <NavBar />{/* Navigation bar component */}
+        <div className='content-section'>{/* Section containing content */}
+          <div className='add-new-btn glass-effect' onClick={() => (window.location.href = '/addLearningProgress')}>{/* Button to add new post */}
+            <IoIosCreate className='add-new-btn-icon' />{/* Icon for the add new button */}
           </div>
-          <div className='post-card-container'>
-            {filteredData.length === 0 ? (
-              <div className='not-found-box glass-effect'>
-                <div className='not-found-img'></div>
-                <p className='not-found-msg'>No posts found. Please create a new post.</p>
+          <div className='post-card-container'>{/* Container for post cards */}
+            {filteredData.length === 0 ? ({/* Conditional rendering if no posts */}
+              <div className='not-found-box glass-effect'>{/* Box shown when no posts found */}
+                <div className='not-found-img'></div> 
+                <p className='not-found-msg'>No posts found. Please create a new post.</p> 
                 <button
                   className='create-post-btn glass-effect'
                   onClick={() => (window.location.href = '/addLearningProgress')}
@@ -242,5 +252,5 @@ function MyLearningProgress() {
     </div>
   );
 }
-
+//
 export default MyLearningProgress;
