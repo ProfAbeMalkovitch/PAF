@@ -10,8 +10,7 @@ DEV Link is a full-stack learning platform built using **React**, **Spring Boot*
 - **Frontend:** React.js
 - **Backend:** Spring Boot
 - **Database:** MongoDB
-- **Auth & Storage:** Firebase
-
+- **Auth & Storage:** Firebaase
 ---
 
 ## 📦 Features
